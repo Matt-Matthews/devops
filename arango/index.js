@@ -1,5 +1,9 @@
 const arango = require("arangojs");
+// const {aoiCollection} = require("../arango/collections")
+
 require("dotenv").config();
+
+console.log(process.env)
 
 const db = new arango.Database({
   url: process.env.DB_HOSTNAME,
@@ -8,3 +12,10 @@ const db = new arango.Database({
     password: process.env.DB_PASSWORD,
   },
 });
+
+// console.log("Collection.....",aoiCollection);
+// console.log(db);
+
+module.exports = {
+  db
+}
