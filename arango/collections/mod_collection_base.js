@@ -21,7 +21,7 @@ class CollectionBase {
             },
             message: "The document does not contain an array of numbers is attribute",
         }
-        console.log(db)
+        // console.log(db)
         await db.createCollection(collectionName, {schema})
         // db._create(collectionName, {"schema": schema});
     }

@@ -1,14 +1,13 @@
 version: '3.9'
 services:
-  arangodb_db_container:
-    image: arangodb:latest
-    env_file:
-      - .env
-    environment:
-      - ARANGO_ROOT_PASSWORD=${DB_PASSWORD}
-    ports:
-      - 8529:8529
   backend_service:
     build: .
+    networks:
+      - network
+      # - b172.17.0.2/16
     ports:
       - "8000:5000"
+
+networks:
+  network:
+    driver: bridge

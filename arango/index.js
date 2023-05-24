@@ -3,8 +3,6 @@ const arango = require("arangojs");
 
 require("dotenv").config();
 
-console.log(process.env)
-
 const db = new arango.Database({
   url: process.env.DB_HOSTNAME,
   auth: {
