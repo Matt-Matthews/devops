@@ -26,7 +26,7 @@ class CollectionBase {
     );
     const dbInstance = db.database("myDB");
     const collection = db.collection(collectionName);
-    await collection.create({ schema });
+    // await collection.create({ schema });
   }
   _add(payload) {}
   _read(query) {}

@@ -1,5 +1,7 @@
 const imaps = require('imap-simple');
-const {EMAIL_SERVER, OUTGOING_EMAIL_PORT,CAM_ALERT_EMAIL_USER,CAM_ALERT_EMAIL_PASSWORD } = require('../configs/config.json');
+require('dotenv').config()
+
+const {EMAIL_SERVER, OUTGOING_EMAIL_PORT,CAM_ALERT_EMAIL_USER,CAM_ALERT_EMAIL_PASSWORD } = process.env;
 
 
 
@@ -16,6 +18,8 @@ const readMailConfig = {
         }
     }
 };
+
+console.log(readMailConfig)
 
 async function readMail() {
 
