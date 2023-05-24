@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server/index.js",
     "start": "node server/index.js",
-    "seed": "node seed/addCollections.js"
+    "initCollections": "node seed/addCollections.js",
+    "populate": "node seed/populateCollections.js",
+    "seed": "npm run initCollections && npm run populate"
   },
   "keywords": [],
   "author": "",
