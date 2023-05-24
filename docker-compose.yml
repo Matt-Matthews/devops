@@ -1,12 +1,16 @@
 version: '3.9'
 services:
-  backend_service:
+  web:
     build: .
-    networks:
-      - network
-      # - b172.17.0.2/16
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - ARANGO_ROOT_PASSWORD=${DB_PASSWORD}
     ports:
       - "8000:5000"
+    networks:
+      - bridge
 
 networks:
   network:
