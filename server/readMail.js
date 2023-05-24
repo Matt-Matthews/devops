@@ -3,8 +3,6 @@ require('dotenv').config()
 
 const {EMAIL_SERVER, OUTGOING_EMAIL_PORT,CAM_ALERT_EMAIL_USER,CAM_ALERT_EMAIL_PASSWORD } = process.env;
 
-
-
 const readMailConfig = {
     imap: {
         user: CAM_ALERT_EMAIL_USER,
@@ -27,7 +25,7 @@ async function readMail() {
 
     try{
         const connection = await imaps.connect(readMailConfig);
-        const box = await connection.openBox('INBOX');
+        await connection.openBox('INBOX');
         const fetchOptions = {
             bodies: ['HEADER', 'TEXT'],
             markSeen: false
@@ -35,18 +33,13 @@ async function readMail() {
         const results = await connection.search(['ALL'], fetchOptions);
         results.forEach(res => {
             const body = res.parts.filter(part=>part.which === 'TEXT')[0].body;
-            
-            if(!body.includes('Event type - SMS')){
-
-                emailList.push(JSON.parse(body));
-            }
+            if(!body.includes('Event type - SMS')) emailList.push(JSON.parse(body));
         });
 
         return emailList;
     }catch(err){
         console.log(err);
     } 
-
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const CollectionBase = require("./mod_collection_base");
+const CollectionBase = require("./db_ArangoCrudBase");
 
 class AOICollection extends CollectionBase {
   constructor() {
@@ -7,9 +7,6 @@ class AOICollection extends CollectionBase {
   addAOI(payload) {
     console.log(payload);
     this._add(payload);
-  }
-  async createAOICollection() {
-    await this._createCollection("vehicles");
   }
 }
 

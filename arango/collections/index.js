@@ -1,4 +1,4 @@
-const AOICollection = require('./mod_AOI_collection')
+const AOICollection = require('./db_Aoi')
 
 module.exports = {
     aoiCollections: new AOICollection()
