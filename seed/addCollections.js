@@ -18,9 +18,8 @@ const createCollection = async (collectionName) => {
 const main = async () => {
     await connect()
 
-    await createCollection('cameraInstallations')
-    await createCollection('routers')
-    await createCollection('cameras')
+    await createCollection('users')
+    
 
     console.log("Initialization of the collections done...")
 }

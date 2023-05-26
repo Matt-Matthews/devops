@@ -1,5 +1,5 @@
-const AOICollection = require('./db_Aoi')
+const UserCollection = require('./db_User')
 
 module.exports = {
-    aoiCollections: new AOICollection()
+    userCollections: new UserCollection()
 }

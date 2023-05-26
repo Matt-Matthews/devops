@@ -1,6 +1,6 @@
 const CollectionBase = require("./db_ArangoCrudBase");
 
-class AOICollection extends CollectionBase {
+class UserCollection extends CollectionBase {
   constructor() {
     super();
   }
@@ -10,4 +10,4 @@ class AOICollection extends CollectionBase {
   }
 }
 
-module.exports = AOICollection;
+module.exports = UserCollection;
