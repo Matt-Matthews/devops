@@ -1,7 +1,9 @@
 {
-    "primary": "#3E63F4",
+    "primary": "#176B87",
     "error": "#E96767",
     "warning": "FCA85A",
     "darkGrey": "#3B3D56",
-    "white": "#ffffff"
+    "white": "#ffffff",
+    "border": "#eaeaea",
+    "bg": "#dcf2f9"
 }
