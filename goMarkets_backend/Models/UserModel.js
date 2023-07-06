@@ -19,6 +19,9 @@ const User = sequelize.define("user", {
   userContact: {
     type: DataTypes.STRING,
   },
+  token: {
+    type: DataTypes.STRING,
+  },
 });
 
 const intializeUser = async () => {
