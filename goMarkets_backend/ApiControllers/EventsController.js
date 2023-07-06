@@ -1,9 +1,10 @@
 const express = require("express");
+const { Events } = require("../Models/EventModel");
 
-const router =  express.Router();
+const router = express.Router();
 
-router.get("/", (req, res) => {
-  console.log("EVENTS");
+router.get("/", async (req, res) => {
+  console.log("EVENTS: ", await Events.findAll());
   return res.json({ message: "Events" });
 });
 

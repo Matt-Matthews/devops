@@ -2,6 +2,7 @@ const express = require("express");
 const eventsRouter = require("./ApiControllers/EventsController");
 const userRouter = require("./ApiControllers/UsersController");
 const authRouter = require("./ApiControllers/AuthController");
+const authMiddleWare = require("./Middleware/auth");
 
 const app = express();
 
@@ -15,8 +16,8 @@ app.use((req, res, err, next) => {
 });
 
 // ROUTERS
-app.use("/events", eventsRouter);
-app.use("/users", userRouter);
+app.use("/events", authMiddleWare, eventsRouter);
+app.use("/users", authMiddleWare, userRouter);
 app.use("/auth", authRouter);
 
 module.exports = { app };

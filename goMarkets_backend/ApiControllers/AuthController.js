@@ -9,6 +9,7 @@ const routes = Router();
 routes.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    let token = "";
     if (!(email && password)) {
       res.status(400).send("All input are required.");
     }
@@ -23,15 +24,20 @@ routes.post("/login", async (req, res) => {
       jwt.sign(
         { _id: password, email },
         config.TOKEN_KEY,
+        {
+          expiresIn: "1d",
+        },
         async (err, decoded) => {
           if (err) throw new Error("Unable to create the token.");
           // console.log(decoded)
           user.token = decoded;
+          // token = decoded;
           // console.log(user);
-          user.save();
+          // req.user = decoded;
+          await user.save();
         }
       );
-      res.status(200).json({ message: "Ok" });
+      res.status(200).json({ message: "Ok", token: user.token });
     }
     res.status(400).json({ message: "Fail", info: "Invalid logging details." });
   } catch (error) {
@@ -51,7 +57,7 @@ routes.post("/register", async (req, res) => {
     }
 
     const oldUser = await User.findOne({ email });
-    console.log("USER😁😁😁", oldUser);
+    // console.log("USER😁😁😁", oldUser);
 
     if (oldUser) {
       res.status(409).send("User Already Exist. Please Login");

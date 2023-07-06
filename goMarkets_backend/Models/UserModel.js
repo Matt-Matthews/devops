@@ -24,7 +24,7 @@ const User = sequelize.define("user", {
   },
 });
 
-const intializeUser = async () => {
+const initializeUser = async () => {
   try {
     await User.sync();
     console.log("User table created successfully.");
@@ -33,6 +33,6 @@ const intializeUser = async () => {
   }
 };
 
-intializeUser();
+initializeUser();
 
 module.exports = { User };
