@@ -3,6 +3,7 @@ const { User } = require("../Models/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../config.json");
+const uuid = require("uuid").v4;
 
 const routes = Router();
 
@@ -14,7 +15,7 @@ routes.post("/login", async (req, res) => {
       res.status(400).send("All input are required.");
     }
 
-    const user = await User.findByPk(email);
+    const user = await User.findOne({ where: { email } });
 
     const isToken = await bcrypt.compare(password, user.password);
 
@@ -49,15 +50,16 @@ routes.post("/register", async (req, res) => {
   try {
     const { email, username, password, userProfile, userContact } = req.body;
 
-    // console.log(req.body);
+    console.log(req.body);
 
     // Validate user input
     if (!(email && password)) {
       res.status(400).send("All input is required");
     }
 
-    const oldUser = await User.findOne({ email });
-    // console.log("USER😁😁😁", oldUser);
+    // const oldUser = await User.findByPk(email);
+    const user = await User.findOne({ where: { email } });
+    console.log("USER😁😁😁", oldUser);
 
     if (oldUser) {
       res.status(409).send("User Already Exist. Please Login");
@@ -78,6 +80,7 @@ routes.post("/register", async (req, res) => {
           userProfile,
           userContact,
           token: decoded,
+          userId: uuid(),
         });
 
         return res.status(201).json(user);

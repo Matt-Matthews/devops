@@ -61,9 +61,11 @@ Events.hasOne(Location, {
 Location.belongsTo(Events);
 
 Events.hasMany(User, {
-  foreignKey: "UserId",
+  foreignKey: "email",
 });
-User.belongsTo(Events);
+User.hasMany(Events, {
+  foreignKey: "eventId"
+});
 
 const initializeEvents = async () => {
   try {

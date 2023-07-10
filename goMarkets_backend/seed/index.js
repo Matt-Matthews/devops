@@ -50,7 +50,7 @@ const insertEvents = async () => {
       eventConditions: event.conditions,
       categoryId: "6331437d-be22-41f3-8026-8ea1c239c2d0",
       locationId: "b357146a-e092-4a55-93d9-5ae37a781935",
-      userId: "fkeorapetse7@gmail.com",
+      userId: "fani@gmail.com",
     });
   }
   await Events.bulkCreate(_eventBulk);
