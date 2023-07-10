@@ -1,0 +1,22 @@
+[
+  {
+    "title": "farmers-market",
+    "type": "casual"
+  },
+  {
+    "title": "lifestyle-market",
+    "type": "casual"
+  },
+  {
+    "title": "night-markets",
+    "type": "weekly"
+  },
+  {
+    "title": "pet-friendly-markets",
+    "type": "casual"
+  },
+  {
+    "title": "vintage-antiques-collectibles-markets",
+    "type": "casual"
+  }
+]
